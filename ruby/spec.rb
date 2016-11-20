@@ -12,6 +12,7 @@ describe 'First test' do
 	end
 
 	after (:each) do
-		@driver.quit
+		print "Press Return to continue..."
+  	STDIN.getc
 	end
 end
