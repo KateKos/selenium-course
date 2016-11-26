@@ -1,15 +1,9 @@
 require 'rspec'
 require 'selenium-webdriver'
-require 'pp'
 
 describe 'First test' do
 	before (:each) do
-		#@driver = Selenium::WebDriver.for :firefox
-		#caps = Selenium::WebDriver::Remote::W3CCapabilities.new()
-		#@driver = Selenium::WebDriver.for(:firefox, :desired_capabilities => caps)
-		caps = Selenium::WebDriver::Remote::Capabilities.new()
-		@driver = Selenium::WebDriver.for(:firefox, :desired_capabilities => caps)
-		puts PP.pp(@driver.capabilities)
+		@driver = Selenium::WebDriver.for :safari
 		@wait = Selenium::WebDriver::Wait.new(:timeout => 10)	
 	end
 
@@ -19,8 +13,6 @@ describe 'First test' do
 		@driver.find_element(:name, 'password').send_keys 'admin'
 		@driver.find_element(:name, 'remember_me').click
 		@driver.find_element(:name, 'login').click
-		print "Press Return to continue..."
-  	STDIN.getc
-		#@driver.quit()
+		@driver.quit()
 	end
 end
