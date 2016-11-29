@@ -4,13 +4,9 @@ require 'pp'
 
 describe 'run firefox nightly' do
 	before (:each) do
-		
-		#caps = Selenium::WebDriver::Remote::W3CCapabilities.new()
-		Selenium::WebDriver::Firefox::Binary.path = "./Applications/FirefoxNightly.app"
+		Selenium::WebDriver::Firefox::Binary.path = "/Applications/FirefoxNightly.app/Contents/MacOS/firefox-bin"
 		@driver = Selenium::WebDriver.for :firefox
-		#@driver = Selenium::WebDriver.for(:firefox, :desired_capabilities => caps)
-		#puts PP.pp(@driver.capabilities)
-		@wait = Selenium::WebDriver::Wait.new(:timeout => 5)	
+		@wait = Selenium::WebDriver::Wait.new(:timeout => 10)	
 	end
 
 	it 'login as admin' do
