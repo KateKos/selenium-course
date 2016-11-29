@@ -1,5 +1,4 @@
-require 'rspec'
-require 'selenium-webdriver'
+require './helpers.rb'
 
 describe 'First test' do
 	before (:each) do
@@ -8,12 +7,7 @@ describe 'First test' do
 	end
 
 	it 'login as admin' do
-		@driver.navigate.to 'http://localhost/litecart/admin/login.php'
-		@driver.find_element(:name, 'username').send_keys 'admin'
-		@driver.find_element(:name, 'password').send_keys 'admin'
-		@driver.find_element(:name, 'remember_me').click
-		@driver.find_element(:name, 'login').click
-		print "Press Return to continue..."
-  	STDIN.getc
+		sign_in('admin', 'admin')
+		stop_browser()
 	end
 end
