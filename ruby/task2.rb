@@ -11,10 +11,12 @@ describe 'case7' do
 
 		#walking through the admin panel menu
 		@driver.find_element(:link_text, "Appearence").click
-		@driver.find_element(:tag_name, "h1")
+		form1 = element_present(:tag_name, "h1")
+		print "#{form1 } "
 
 		@driver.find_element(:link, "Template").click
-		@driver.find_element(:tag_name, "h1")
+		form2 = element_present(:tag_name, "h1")
+		print "#{form2 } "
 
 		@driver.find_element(:xpath, '//*[@id="doc-logotype"]/a').click
 		@driver.find_element(:tag_name, "h1")
