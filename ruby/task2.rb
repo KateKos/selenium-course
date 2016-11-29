@@ -1,5 +1,4 @@
-require 'rspec'
-require 'selenium-webdriver'
+require './helpers.rb'
 
 describe 'case7' do
 	before (:each) do
@@ -8,29 +7,33 @@ describe 'case7' do
 	end
 
 	it 'goes through admin' do
-		@driver.navigate.to 'http://localhost/litecart/admin/login.php'
-		@driver.find_element(:name, 'username').send_keys 'admin'
-		@driver.find_element(:name, 'password').send_keys 'admin'
-		@driver.find_element(:name, 'remember_me').click
-		@driver.find_element(:name, 'login').click
+		sign_in('admin', 'admin')
 
 		#walking through the admin panel menu
 		@driver.find_element(:link_text, "Appearence").click
 		@driver.find_element(:tag_name, "h1")
-		@driver.find_element(:link_text, "Template").click
+
+		@driver.find_element(:link, "Template").click
 		@driver.find_element(:tag_name, "h1")
-		@driver.find_element(:link_text, "Logotype").click
+
+		@driver.find_element(:xpath, '//*[@id="doc-logotype"]/a').click
 		@driver.find_element(:tag_name, "h1")
+
 		@driver.find_element(:link_text, "Catalog").click
 		@driver.find_element(:tag_name, "h1")
-		@driver.find_element(:link_text, "Catalog").click
+
+		@driver.find_element(:id, "doc-catalog").click
 		@driver.find_element(:tag_name, "h1")
-		@driver.find_element(:link_text, "Product Groups").click
+		
+		@driver.find_element(:xpath, '//a[contains(@href,"?app=catalog&doc=product_groups")]').click
 		@driver.find_element(:tag_name, "h1")
-		@driver.find_element(:link_text, "Option Groups").click
+
+		@driver.find_element(:css, "#doc-option_groups > a").click
 		@driver.find_element(:tag_name, "h1")
-		@driver.find_element(:link_text, "Manufacturers").click
+		
+		@driver.find_element(:css, "a[href*='?app=catalog&doc=manufacturers']").click
 		@driver.find_element(:tag_name, "h1")
+		
 		@driver.find_element(:link_text, "Suppliers").click
 		@driver.find_element(:tag_name, "h1")
 		@driver.find_element(:link_text, "Delivery Statuses").click
@@ -62,7 +65,6 @@ describe 'case7' do
 		@driver.find_element(:link_text, "Storage Encoding").click
 		@driver.find_element(:tag_name, "h1")
 		
-		print "Press Return to continue..."
-  	STDIN.getc
+		stop_browser()
 	end
 end
