@@ -1,4 +1,5 @@
 play.rb
+wait_el.rb
 *.gem
 *.rbc
 /.config
