@@ -12,7 +12,6 @@ describe 'Countries and geozones' do
 		
 		table = @driver.find_element(:xpath, "//table[@class='dataTable']")
     rows = table.find_elements(:xpath, "//tr[@class='row']")
-    n = rows.size
     list = Array.new
 
     for row in rows
