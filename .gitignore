@@ -1,5 +1,7 @@
 play.rb
+play1.rb
 wait_el.rb
+.byebug_history
 *.gem
 *.rbc
 /.config

@@ -1,5 +1,6 @@
 require 'rspec'
 require 'selenium-webdriver'
+require 'byebug'
 
 def sign_in (login, password)
 		@driver.navigate.to 'http://localhost/litecart/admin/login.php'
@@ -23,4 +24,8 @@ end
 
 def elements_present(how, what)
   return @driver.find_elements(how, what).size > 0
+end
+
+def back
+  @bridge.goBack
 end
