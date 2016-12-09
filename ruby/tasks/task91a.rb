@@ -2,8 +2,7 @@ require './helpers.rb'
 
 describe 'Countries and geozones' do
 	before (:each) do
-		@driver = Selenium::WebDriver.for :chrome
-		@wait = Selenium::WebDriver::Wait.new(:timeout => 10)	
+		browser_launch()	
 	end
 
 	it 'check countires sorting' do

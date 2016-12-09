@@ -10,6 +10,11 @@ def sign_in (login, password)
 		@driver.find_element(:name, 'login').click
 end
 
+def browser_launch()
+  @driver = Selenium::WebDriver.for :chrome
+  @wait = Selenium::WebDriver::Wait.new(:timeout => 20) 
+end
+
 def stop_browser()
   print "Press Return to continue..."
   STDIN.getc

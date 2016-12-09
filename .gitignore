@@ -1,6 +1,7 @@
 play.rb
 play1.rb
 wait_el.rb
+new_tab.rb
 .byebug_history
 *.gem
 *.rbc
