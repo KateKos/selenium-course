@@ -17,6 +17,7 @@ describe 'Products' do
     regular_price_fweight = @driver.find_element(:xpath, "//s[@class='regular-price']").css_value("font-weight")
     
     campaign_price_text = @driver.find_element(:xpath, "//strong[text()='$18']").css_value("text-decoration")
+    campaign_price_color = @driver.find_element(:xpath, "//strong[text()='$18']").css_value("color")
     campaign_price_fsize = @driver.find_element(:xpath, "//strong[@class='campaign-price']").css_value("font-size")
     campaign_price_fweight = @driver.find_element(:xpath, "//strong[@class='campaign-price']").css_value("font-weight")
 
@@ -33,16 +34,22 @@ describe 'Products' do
       puts "Regular price font size was changed"
     end
 
-     if regular_price_fweight == ('normal')
+    if regular_price_fweight == ('normal')
       puts "Regular price font weight is correct"
     else
       puts "Regular price font weight was changed"
     end
-###
-     if campaign_price_text == ('none')
+
+    if campaign_price_text == ('none')
       puts "Campaign price text is correct"
     else
       puts "Campaign price text was changed"
+    end
+
+    if campaign_price_color == ('rgba(204, 0, 0, 1)')
+      puts "Campaign price text color is correct"
+    else
+      puts "Campaign price text color was changed"
     end
 
     if campaign_price_fsize == ('22px')
@@ -51,7 +58,7 @@ describe 'Products' do
       puts "Campaign price font size was changed"
     end
 
-     if campaign_price_fweight == ('bold')
+    if campaign_price_fweight == ('bold')
       puts "Campaign price font weight is correct"
     else
       puts "Campaign price font weight was changed"
