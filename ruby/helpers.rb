@@ -1,6 +1,7 @@
 require 'rspec'
 require 'selenium-webdriver'
 require 'byebug'
+require 'faker'
 
 def sign_in (login, password)
 		@driver.navigate.to 'http://localhost/litecart/admin/login.php'
