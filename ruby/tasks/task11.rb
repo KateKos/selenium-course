@@ -24,14 +24,14 @@ describe 'New account' do
     password = Faker::Internet.password(10, 20, true) #remember this to test login
     @driver.find_element(:xpath, "//input[@name = 'password']").send_keys "#{password}"
     @driver.find_element(:xpath, "//input[@name = 'confirmed_password']").send_keys "#{password}"
-    @driver.find_element(:xpath, "//button[@name = 'create_account']").click
+    @driver.find_element(:xpath, "//button[@name = 'create_account']").send_keys :return
 
     #logout and login with new account
     @driver.find_element(:xpath, "//a[contains(@href,'/logout')]").click
     @driver.find_element(:xpath, "//input[@name = 'email']").send_keys "#{email}"
     @driver.find_element(:xpath, "//input[@name = 'password']").send_keys "#{password}"
     @driver.find_element(:xpath, "//input[@name = 'remember_me']").click
-    @driver.find_element(:xpath, "//button[@name = 'login']").click
+    @driver.find_element(:xpath, "//button[@name = 'login']").send_keys :return
     @driver.find_element(:xpath, "//a[contains(@href,'/logout')]").click
     
     stop_browser()
