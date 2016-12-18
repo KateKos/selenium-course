@@ -13,7 +13,7 @@ end
 
 def browser_launch()
   @driver = Selenium::WebDriver.for :chrome
-  @wait = Selenium::WebDriver::Wait.new(:timeout => 20) 
+  @wait = Selenium::WebDriver::Wait.new(:timeout => 10) 
 end
 
 def stop_browser()
@@ -34,4 +34,11 @@ end
 
 def back
   @bridge.goBack
+end
+
+def staleness_of(element)
+ element.enabled?
+ false
+rescue Selenium::WebDriver::Error::ObsoleteElementError
+ true
 end
