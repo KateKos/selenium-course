@@ -48,8 +48,9 @@ describe 'Shopping cart' do
     i = 0
 
     while i < products_amount
+      table = @driver.find_element(:xpath, "//table[@class ='dataTable rounded-corners']")
       @driver.find_element(:xpath, "//button[@name = 'remove_cart_item']").click
-      @wait.until{@driver.find_element(:xpath, "//table[@class ='dataTable rounded-corners']")}
+      @wait.until{ staleness_of(table) }
       @driver.navigate.refresh
       i+=1
     end
