@@ -16,9 +16,9 @@ describe 'Countries' do
       #byebug
       main_window = @driver.window_handle
       link.click
+      @driver.manage.timeouts.implicit_wait = 10
       @driver.switch_to.window( @driver.window_handles.last ) #use the newest tab
       @driver.close #close the window once we're done with that
-      @driver.manage.timeouts.implicit_wait = 10
       @driver.switch_to.window( main_window ) #switch to main window       
     end
 
