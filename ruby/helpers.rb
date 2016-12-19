@@ -42,3 +42,10 @@ def staleness_of(element)
 rescue Selenium::WebDriver::Error::ObsoleteElementError
  true
 end
+
+def window_opened_full(old_windows, new_windows)
+  old_windows < new_windows
+    true
+  rescue Selenium::WebDriver::Error::NoSuchWindowError
+    false
+end
