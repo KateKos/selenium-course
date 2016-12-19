@@ -2,6 +2,7 @@ require 'rspec'
 require 'selenium-webdriver'
 require 'byebug'
 require 'faker'
+require 'logger'
 
 def sign_in (login, password)
 		@driver.navigate.to 'http://localhost/litecart/admin/login.php'
@@ -13,6 +14,11 @@ end
 
 def browser_launch()
   @driver = Selenium::WebDriver.for :chrome
+  @wait = Selenium::WebDriver::Wait.new(:timeout => 10) 
+end
+
+def browser_launch_listener()
+  @driver = Selenium::WebDriver.for(:chrome, :listener => MyListener.new(Logger.new(STDOUT)))
   @wait = Selenium::WebDriver::Wait.new(:timeout => 10) 
 end
 
