@@ -6,6 +6,10 @@ class CheckoutPage
     @driver = driver
     @wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
   end
+
+  def navigate
+    @driver.get 'http://localhost/litecart/en/checkout'
+  end
   
   def staleness_of(element)
     element.enabled?
@@ -14,7 +18,7 @@ class CheckoutPage
     true
   end
 
-	def open_checkout()
+	def open_checkout
     @driver.find_element(:xpath, "//a[contains(@href,'/checkout')]").click 
   end
 
@@ -34,7 +38,20 @@ class CheckoutPage
     @driver.navigate.refresh
   end
 
-  def empty_cart
+  def clear_cart
+    while not empty_cart? do
+      table = nil
+      begin
+        table = find_products_table
+      rescue Selenium::WebDriver::Error::NoSuchElementError
+        return
+      end
+      remove_product_from_checkout
+      table_wait(table)
+    end
+  end
+
+  def empty_cart?
     text = @driver.find_element(:xpath, "//em[text()='There are no items in your cart.']").text
 
     if text == ('There are no items in your cart.')

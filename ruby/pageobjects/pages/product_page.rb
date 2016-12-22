@@ -7,6 +7,10 @@ class ProductPage
     @wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
   end
 
+  def navigate
+    @driver.get 'http://localhost/litecart/en/rubber-ducks-c-1/'
+  end
+
   def find_product(title)
     @driver.find_element(:xpath, "//a[@title = '#{title}']").click
   end

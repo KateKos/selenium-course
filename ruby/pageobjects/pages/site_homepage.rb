@@ -12,8 +12,4 @@ class LitecartHomepage
     self
   end
 
-  def open_checkout
-  	@driver.get 'http://localhost/litecart/en/checkout'
-	end
-
 end
