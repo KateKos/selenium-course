@@ -13,10 +13,6 @@ class Application
     @product_page = ProductPage.new @driver
     @checkout_page = CheckoutPage.new @driver
   end
-  
-  def open_cart
-    @checkout_page.open_checkout
-  end
 
   def add_product_into_cart (product_spec)
     @product_page.navigate
@@ -26,6 +22,10 @@ class Application
     sleep(0.5)
   end
 
+  def open_cart
+    @checkout_page.open_checkout
+  end
+  
   def clear_cart
     @checkout_page.navigate
     @checkout_page.clear_cart

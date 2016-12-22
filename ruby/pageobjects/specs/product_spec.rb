@@ -6,7 +6,7 @@ describe 'Litecart' do
 	
 	it 'add and remove products should work' do 
 
-		@app.clear_cart
+		@app.clear_cart #go to cart and clear it before adding new products
 
 		products = [{name: "Red Duck", qty: 2}, 
 		            {name: "Green Duck", qty: 1}, 
